@@ -1,0 +1,25 @@
+Description of the program.
+Author: Dmytro Dychenko.
+
+The basis of the program is two sorted lists: orders, pickers. And the `Day Timer` with which we `live' the day.
+
+Orders - contains information about orders. Sorted twice:
+    First - by profitability (from expensive to cheap).
+    Then - according to the urgency of the order. (The first one is the one that needs to be given
+    before the others minus the lead time)
+
+Pickers - contains information about pickers. There is only one sorting,
+but it is sorted every time after receiving the work by picker.
+Pickers are sorted according to the principle:
+    Whoever runs out of an order earlier is higher.
+
+At every minute of the working day, we check whether there are available deliverers.
+If there are any, we go through the sorted list of orders until we find one that can be executed.
+Unsuitable orders are deleted. A suitable order is deleted after reading the information.
+If there are no more orders, the program terminates.
+Picker changes the information about the end time of the order.
+There is a new sorting of the list.
+The Picker who is released before everyone else is in the first place.
+
+This happens until the free pickers run out.
+Then comes the next minute of time, where everything starts all over again.
